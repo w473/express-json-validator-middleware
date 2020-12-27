@@ -16,11 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      # TODO: Add codecov as a dev dependency and run with npx
-
       - run: npm install
-      - run: npm i -g codecov
       - run: npx nyc mocha
       - run: npx nyc report --reporter=lcov
       - run: cat ./coverage/lcov.info > coverage.lcov
